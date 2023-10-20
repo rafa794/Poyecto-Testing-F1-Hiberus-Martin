@@ -1,20 +1,13 @@
 package com.f1hiberusmartin.estrategia;
-import lombok.Getter;
-import lombok.Setter;
-
+import lombok.Data;
+@Data
 public class Combustible {
-    private CombustibleComplemento complemento;
-
-    @Getter @Setter private String tipo;
-    @Getter @Setter private float capacidad;
-
-    public Combustible(String tipo, float capacidad) {
-        this.tipo = tipo;
-        this.capacidad = capacidad;
-        this.complemento = new CombustibleComplemento();
-    }
-
-    public boolean validarCombustible() {
-        return complemento.validarTipo(tipo) && complemento.validarCapacidad(capacidad);
-    }
+private String tipo;
+private float capacidad;
+public Combustible(String tipo, float capacidad) {
+    if (tipo != null && !("Gasolina".equals(tipo) || "Diésel".equals(tipo))) throw new IllegalArgumentException("El tipo de combustible debe ser 'Gasolina' o 'Diésel'");
+    if (capacidad < 0.0f) throw new IllegalArgumentException("La capacidad no puede ser negativa");
+    this.tipo = tipo;
+    this.capacidad = capacidad;
+}
 }

@@ -2,20 +2,18 @@
 import lombok.Getter;
 import lombok.Setter;
 public class Neumaticos {
-<span class="fc" id="L5">    @Getter</span>
-<span class="fc" id="L6">    @Setter</span>
-    private String marca;
-<span class="fc" id="L8">    @Getter</span>
-    private float porcentajeVida;
-<span class="fc" id="L10">    public Neumaticos(String marca, float porcentajeVida) {</span>
-<span class="fc bfc" id="L11" title="All 4 branches covered.">        if (!&quot;Pirelli&quot;.equals(marca) &amp;&amp; !&quot;Bridgestone&quot;.equals(marca)) throw new IllegalArgumentException(&quot;La marca de neumáticos debe ser 'Pirelli' o 'Bridgestone'&quot;);</span>
-<span class="fc bfc" id="L12" title="All 2 branches covered.">        if (porcentajeVida &lt; 0.0f) throw new IllegalArgumentException(&quot;El porcentaje de vida no puede ser negativo&quot;);</span>
-<span class="fc" id="L13">        this.marca = marca;</span>
-<span class="fc" id="L14">        this.porcentajeVida = porcentajeVida;</span>
-<span class="fc" id="L15">    }</span>
-    public void setPorcentajeVida(float porcentajeVida) {
-<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (porcentajeVida &lt; 0.0f) throw new IllegalArgumentException(&quot;El porcentaje de vida no puede ser negativo&quot;);</span>
-<span class="fc" id="L18">        this.porcentajeVida = porcentajeVida;</span>
-<span class="fc" id="L19">    }</span>
+<span class="fc" id="L5">@Getter @Setter private String marca;</span>
+<span class="fc" id="L6">@Getter private float porcentajeVida;</span>
+<span class="fc" id="L7">public Neumaticos(String marca, Float porcentajeVida) {</span>
+<span class="fc bfc" id="L8" title="All 4 branches covered.">    if (!&quot;Pirelli&quot;.equals(marca) &amp;&amp; !&quot;Bridgestone&quot;.equals(marca)) throw new IllegalArgumentException(&quot;La marca de neumáticos debe ser 'Pirelli' o 'Bridgestone'&quot;);</span>
+<span class="pc bpc" id="L9" title="1 of 2 branches missed.">    if (porcentajeVida == null) this.porcentajeVida = 0.0f;</span>
+<span class="fc bfc" id="L10" title="All 2 branches covered.">    else if (porcentajeVida &lt; 0.0f) throw new IllegalArgumentException(&quot;El porcentaje de vida no puede ser negativo&quot;);</span>
+<span class="fc" id="L11">    else this.porcentajeVida = porcentajeVida;</span>
+<span class="fc" id="L12">    this.marca = marca;</span>
+<span class="fc" id="L13">}</span>
+public void setPorcentajeVida(float porcentajeVida) {
+<span class="fc bfc" id="L15" title="All 2 branches covered.">    if (porcentajeVida &lt; 0.0f) throw new IllegalArgumentException(&quot;El porcentaje de vida no puede ser negativo&quot;);</span>
+<span class="fc" id="L16">    this.porcentajeVida = porcentajeVida;</span>
+<span class="fc" id="L17">}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

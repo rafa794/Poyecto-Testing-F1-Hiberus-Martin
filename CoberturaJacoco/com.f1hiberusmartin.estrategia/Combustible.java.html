@@ -1,28 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Combustible.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PoyectoF1HiberusMartin</a> &gt; <a href="index.source.html" class="el_package">com.f1hiberusmartin.estrategia</a> &gt; <span class="el_source">Combustible.java</span></div><h1>Combustible.java</h1><pre class="source lang-java linenums">package com.f1hiberusmartin.estrategia;
-import lombok.Getter;
-import lombok.Setter;
-import java.util.Objects;
+import lombok.Data;
+<span class="pc bpc" id="L3" title="5 of 16 branches missed.">@Data</span>
 public class Combustible {
-<span class="pc" id="L6">    @Getter @Setter private String tipo;</span>
-<span class="fc" id="L7">    @Getter @Setter private float capacidad;</span>
-<span class="fc" id="L8">    public Combustible(String tipo, float capacidad) {</span>
-<span class="fc bfc" id="L9" title="All 6 branches covered.">        if (tipo != null &amp;&amp; !(&quot;Gasolina&quot;.equals(tipo) || &quot;Diésel&quot;.equals(tipo))) {</span>
-<span class="fc" id="L10">            throw new IllegalArgumentException(&quot;El tipo de combustible debe ser 'Gasolina' o 'Diésel'&quot;);</span>
-<span class="fc bfc" id="L11" title="All 2 branches covered.">        } if (capacidad &lt; 0.0f) {</span>
-<span class="fc" id="L12">            throw new IllegalArgumentException(&quot;La capacidad no puede ser negativa&quot;);</span>
-<span class="fc" id="L13">        } this.tipo = tipo;</span>
-<span class="fc" id="L14">        this.capacidad = capacidad;</span>
-<span class="fc" id="L15">    }</span>
-    @Override public boolean equals(Object obj) {
-<span class="fc bfc" id="L17" title="All 2 branches covered.">        if (this == obj) return true;</span>
-<span class="pc bpc" id="L18" title="1 of 4 branches missed.">        if (obj == null || getClass() != obj.getClass()) return false;</span>
-<span class="fc" id="L19">            Combustible other = (Combustible) obj;</span>
-<span class="fc bfc" id="L20" title="All 4 branches covered.">            return Objects.equals(tipo, other.tipo) &amp;&amp; Float.compare(other.capacidad, capacidad) == 0;</span>
-
-    }
-    @Override
-    public int hashCode() {
-<span class="fc" id="L25">        return Objects.hash(tipo, capacidad);</span>
-    }
+<span class="fc" id="L5">private String tipo;</span>
+<span class="fc" id="L6">private float capacidad;</span>
+<span class="fc" id="L7">public Combustible(String tipo, float capacidad) {</span>
+<span class="fc bfc" id="L8" title="All 6 branches covered.">    if (tipo != null &amp;&amp; !(&quot;Gasolina&quot;.equals(tipo) || &quot;Diésel&quot;.equals(tipo))) throw new IllegalArgumentException(&quot;El tipo de combustible debe ser 'Gasolina' o 'Diésel'&quot;);</span>
+<span class="fc bfc" id="L9" title="All 2 branches covered.">    if (capacidad &lt; 0.0f) throw new IllegalArgumentException(&quot;La capacidad no puede ser negativa&quot;);</span>
+<span class="fc" id="L10">    this.tipo = tipo;</span>
+<span class="fc" id="L11">    this.capacidad = capacidad;</span>
+<span class="fc" id="L12">}</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

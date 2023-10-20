@@ -2,20 +2,18 @@
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-<span class="fc" id="L5">@AllArgsConstructor</span>
+import java.util.List;
+<span class="fc" id="L6">@AllArgsConstructor</span>
 public class Estrategia {
-<span class="fc" id="L7">    @Getter @Setter private Combustible combustible;</span>
-<span class="fc" id="L8">    @Getter @Setter private float combustibleConsumidoPorKmRecorrido;</span>
-<span class="fc" id="L9">    @Getter @Setter private Neumaticos neumaticos;</span>
-<span class="fc" id="L10">    @Getter @Setter private float porcentajeDeVidaDeNeumaticosConsumidoPorKmRecorrido;</span>
-<span class="fc" id="L11">    @Getter @Setter private float kilometrosARecorrer;</span>
-
-    public boolean esViable() {
-<span class="fc" id="L14">        float combustibleNecesario = this.kilometrosARecorrer * this.combustibleConsumidoPorKmRecorrido;</span>
-<span class="fc" id="L15">        float neumaticosDesgastados = this.kilometrosARecorrer * this.porcentajeDeVidaDeNeumaticosConsumidoPorKmRecorrido;</span>
-<span class="fc bfc" id="L16" title="All 2 branches covered.">        boolean condicion1 = combustibleNecesario &lt;= this.combustible.getCapacidad();</span>
-<span class="pc bpc" id="L17" title="1 of 2 branches missed.">        boolean condicion2 = neumaticosDesgastados &lt;= 100.0f;</span>
-<span class="pc bpc" id="L18" title="1 of 4 branches missed.">        return condicion1 &amp;&amp; condicion2;</span>
-    }
+<span class="fc" id="L8">@Getter @Setter private Combustible combustible;</span>
+<span class="fc" id="L9">@Getter @Setter private float combustibleConsumidoPorKmRecorrido;</span>
+<span class="fc" id="L10">@Getter private List&lt;Neumaticos&gt; neumaticos;</span>
+<span class="fc" id="L11">@Getter @Setter private float kilometrosARecorrer;</span>
+public boolean esViable() {
+<span class="pc bpc" id="L13" title="1 of 10 branches missed.">    return combustible != null &amp;&amp; neumaticos != null &amp;&amp; kilometrosARecorrer &gt;= 0 &amp;&amp; neumaticos.stream().allMatch(this::neumaticoValido) &amp;&amp; combustible.getCapacidad() &gt;= (kilometrosARecorrer * combustibleConsumidoPorKmRecorrido);</span>
+}
+private boolean neumaticoValido(Neumaticos neumatico) {
+<span class="pc bpc" id="L16" title="1 of 4 branches missed.">    return neumatico != null &amp;&amp; neumatico.getPorcentajeVida() &gt; 0.0f;</span>
+}
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>

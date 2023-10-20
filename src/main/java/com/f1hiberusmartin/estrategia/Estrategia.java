@@ -1,29 +1,18 @@
 package com.f1hiberusmartin.estrategia;
-
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import java.util.List;
+@AllArgsConstructor
 public class Estrategia {
-    private Combustible combustible;
-    private float combustibleConsumidoPorKmRecorrido;
-    private Neumaticos neumaticos;
-    private float porcentajeDeVidaDeNeumaticosConsumidoPorKmRecorrido;
-    private float kilometrosARecorrer;
-
-    public Estrategia(Combustible combustible, float combustibleConsumidoPorKmRecorrido,
-                      Neumaticos neumaticos, float porcentajeDeVidaDeNeumaticosConsumidoPorKmRecorrido,
-                      float kilometrosARecorrer) {
-        this.combustible = combustible;
-        this.combustibleConsumidoPorKmRecorrido = combustibleConsumidoPorKmRecorrido;
-        this.neumaticos = neumaticos;
-        this.porcentajeDeVidaDeNeumaticosConsumidoPorKmRecorrido = porcentajeDeVidaDeNeumaticosConsumidoPorKmRecorrido;
-        this.kilometrosARecorrer = kilometrosARecorrer;
-    }
-
-    public boolean esViable() {
-        // Lógica para determinar si la estrategia es viable
-        float combustibleNecesario = this.kilometrosARecorrer * this.combustibleConsumidoPorKmRecorrido;
-        float neumaticosDesgastados = this.kilometrosARecorrer * this.porcentajeDeVidaDeNeumaticosConsumidoPorKmRecorrido;
-
-        return (combustibleNecesario <= this.combustible.getCapacidad()) &&
-                (neumaticosDesgastados <= this.neumaticos.getPorcentajeVida());
-    }
+@Getter @Setter private Combustible combustible;
+@Getter @Setter private float combustibleConsumidoPorKmRecorrido;
+@Getter private List<Neumaticos> neumaticos;
+@Getter @Setter private float kilometrosARecorrer;
+public boolean esViable() {
+    return combustible != null && neumaticos != null && kilometrosARecorrer >= 0 && neumaticos.stream().allMatch(this::neumaticoValido) && combustible.getCapacidad() >= (kilometrosARecorrer * combustibleConsumidoPorKmRecorrido);
 }
-
+private boolean neumaticoValido(Neumaticos neumatico) {
+    return neumatico != null && neumatico.getPorcentajeVida() > 0.0f;
+}
+}
