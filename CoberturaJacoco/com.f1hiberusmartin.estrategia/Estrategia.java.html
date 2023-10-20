@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Estrategia.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">PoyectoF1HiberusMartin</a> &gt; <a href="index.source.html" class="el_package">com.f1hiberusmartin.estrategia</a> &gt; <span class="el_source">Estrategia.java</span></div><h1>Estrategia.java</h1><pre class="source lang-java linenums">package com.f1hiberusmartin.estrategia;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+<span class="fc" id="L5">@AllArgsConstructor</span>
+public class Estrategia {
+<span class="fc" id="L7">    @Getter @Setter private Combustible combustible;</span>
+<span class="fc" id="L8">    @Getter @Setter private float combustibleConsumidoPorKmRecorrido;</span>
+<span class="fc" id="L9">    @Getter @Setter private Neumaticos neumaticos;</span>
+<span class="fc" id="L10">    @Getter @Setter private float porcentajeDeVidaDeNeumaticosConsumidoPorKmRecorrido;</span>
+<span class="fc" id="L11">    @Getter @Setter private float kilometrosARecorrer;</span>
+
+    public boolean esViable() {
+<span class="fc" id="L14">        float combustibleNecesario = this.kilometrosARecorrer * this.combustibleConsumidoPorKmRecorrido;</span>
+<span class="fc" id="L15">        float neumaticosDesgastados = this.kilometrosARecorrer * this.porcentajeDeVidaDeNeumaticosConsumidoPorKmRecorrido;</span>
+<span class="fc bfc" id="L16" title="All 2 branches covered.">        boolean condicion1 = combustibleNecesario &lt;= this.combustible.getCapacidad();</span>
+<span class="pc bpc" id="L17" title="1 of 2 branches missed.">        boolean condicion2 = neumaticosDesgastados &lt;= 100.0f;</span>
+<span class="pc bpc" id="L18" title="1 of 4 branches missed.">        return condicion1 &amp;&amp; condicion2;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.9.202303310957</span></div></body></html>
